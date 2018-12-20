@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Say Hello!{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css')}}" type="text/css">
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
 </head>
 <body>
 <main class="container">
@@ -30,6 +31,9 @@
     </footer>
 </main>
 
-<script type="text/javascript" src="{{ url_for('static', filename='script.js')}}"></script>
+{{ bootstrap.load_js() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+{{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
+{{ moment.locale(auto_detect=True) }}
 </body>
 </html>
