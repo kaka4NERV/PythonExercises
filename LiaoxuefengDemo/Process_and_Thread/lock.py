@@ -1,4 +1,4 @@
-import time, threading
+import threading
 
 # 假定这是你的银行存款:
 balance = 0
